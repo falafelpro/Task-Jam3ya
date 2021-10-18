@@ -24,7 +24,7 @@ export default function SignUpModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">Signup</Modal.Title>
       </Modal.Header>
       <Modal.Body>

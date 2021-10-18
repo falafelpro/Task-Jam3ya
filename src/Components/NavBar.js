@@ -10,8 +10,8 @@ function NavBar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#dashboard">Dashboard</Nav.Link>
-              <Nav.Link href="#test">test</Nav.Link>
+              <Nav.Link href="Dashboard">Dashboard</Nav.Link>
+              <Nav.Link href="/">Login</Nav.Link>
             </Nav>
             <Nav>
               <Nav.Link href="#deets">Logout</Nav.Link>
