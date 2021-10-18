@@ -1,5 +1,7 @@
 import React from "react";
 import { Navbar, Nav, NavItem, Container } from "react-bootstrap";
+import authenticationStore from "../Stores/authenticationStore";
+import { observer } from "mobx-react";
 
 function NavBar() {
   return (
@@ -10,11 +12,15 @@ function NavBar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="Dashboard">Dashboard</Nav.Link>
-              <Nav.Link href="/">Login</Nav.Link>
+              <Nav.Link href="/Dashboard">Dashboard</Nav.Link>
+              {!authenticationStore.user && (
+                <Nav.Link href="/signin">Login</Nav.Link>
+              )}
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">Logout</Nav.Link>
+              {authenticationStore.user && (
+                <Nav.Link href="#deets">Logout</Nav.Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -23,4 +29,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default observer(NavBar);

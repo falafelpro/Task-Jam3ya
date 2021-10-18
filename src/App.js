@@ -5,18 +5,22 @@ import NavBar from "./Components/NavBar";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Login from "./Components/Login";
 import React from "react";
+import authenticationStore from "./Stores/authenticationStore";
+import { observer } from "mobx-react";
+import { Redirect } from "react-router";
 
 function App() {
+  //if (authenticationStore.user) <Redirect to="/Dashboard" />;
   return (
     <>
       <NavBar />
       <BrowserRouter>
         <Switch>
-          <Route exact path="/dashboard">
+          <Route exact path="/Dashboard">
             <Dashboard />
             <Details />
           </Route>
-          <Route exact path="/">
+          <Route exact path="/signin">
             <Login />
           </Route>
         </Switch>
@@ -25,4 +29,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);

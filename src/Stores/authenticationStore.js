@@ -1,21 +1,28 @@
 import api from "./api";
-import { makeObservable, action, observable } from "mobx";
+import { makeObservable, makeAutoObservable, action, observable } from "mobx";
 import decode from "jwt-decode";
+import { Redirect } from "react-router";
+
+//after submit form redirect user
 
 class AuthenticationStore {
   user = null;
 
   constructor() {
-    makeObservable(this, {
-      user: observable,
-      logging: action,
-    });
+    makeAutoObservable(this, {});
+
+    // makeObservable(this, {
+    //   user: observable,
+    //   logging: action,
+    // });
   }
 
   setUser = (token) => {
     localStorage.setItem("personalToken", token);
     api.defaults.headers.common.Authorization = `Bearar ${token}`;
     this.user = decode(token);
+
+    console.log(token);
   };
   logging = async (loggingInfo, path) => {
     try {
@@ -31,7 +38,23 @@ class AuthenticationStore {
     localStorage.removeItem("personalToken");
     this.user = null;
   };
+
+  checkToken = () => {
+    const token = localStorage.getItem("personalToken");
+    if (token) {
+      const currentTime = Date.now();
+
+      let tempUserToken = decode(token);
+      if (tempUserToken.exp >= currentTime) {
+        this.setUser(token);
+        <Redirect to="/Dashboard" />;
+      } else {
+        this.logOut();
+      }
+    }
+  };
 }
 
 const authenticationStore = new AuthenticationStore();
+authenticationStore.checkToken();
 export default authenticationStore;
