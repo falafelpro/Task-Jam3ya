@@ -30,7 +30,16 @@ class Jam3yaStore {
     try {
       console.log(id);
       const response = await api.delete("/jam3ya" + `/${id}`);
-      this.Jam3yaStore.fetchJam3yat();
+      //this.Jam3yaStore.fetchJam3yat();
+    } catch (error) {
+      console.error("Jam3yaStore -> deleteJam3ya -> error", error);
+    }
+  };
+
+  joinJam3ya = async (id) => {
+    try {
+      console.log(id);
+      const response = await api.post("/jam3ya/join" + `/${id}`);
     } catch (error) {
       console.error("Jam3yaStore -> deleteJam3ya -> error", error);
     }

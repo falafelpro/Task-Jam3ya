@@ -51,6 +51,7 @@ function CreateJam3yaModal(props) {
             <InputGroup.Text>Start Date</InputGroup.Text>
             <DatePicker
               selected={jam3ya.startDate}
+              showTimeSelect
               onChange={(date) => setJam3ya({ ...jam3ya, startDate: date })}
             />
           </InputGroup>
@@ -59,6 +60,7 @@ function CreateJam3yaModal(props) {
             <InputGroup.Text>End Date</InputGroup.Text>
             <DatePicker
               selected={jam3ya.endDate}
+              showTimeSelect
               onChange={(date) => setJam3ya({ ...jam3ya, endDate: date })}
             />
           </InputGroup>

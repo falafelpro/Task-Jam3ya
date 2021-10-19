@@ -29,10 +29,10 @@ function NavBar() {
             <Nav>
               {authenticationStore.user ? (
                 <>
-                  <li class="nav-item">
+                  <li className="nav-item">
                     Hello {authenticationStore.user.username}
                   </li>
-                  <li class="nav-item">
+                  <li className="nav-item">
                     <Button onClick={() => authenticationStore.logOut()}>
                       Logout
                     </Button>
@@ -40,7 +40,7 @@ function NavBar() {
                 </>
               ) : (
                 <>
-                  <li class="nav-item">
+                  <li className="nav-item">
                     <Button
                       onClick={() => {
                         setSignupIsOpen(true);
