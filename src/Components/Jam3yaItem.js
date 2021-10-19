@@ -2,27 +2,28 @@ import React from "react";
 import DetailsModal from "./DetailsModal";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-function Jam3yaItem({ Jam3ya }) {
+import { observer } from "mobx-react";
+function Jam3yaItem({ jam3ya }) {
   const [modalShow, setModalShow] = useState(false);
   return (
     <div className="card">
-      <img className="card-img-top" src={Jam3ya.image} alt="" />
+      <img className="card-img-top" src={jam3ya.image} alt="" />
       <div className="card-body">
-        <h2 className="card-title">{Jam3ya.title}</h2>
-        <p>owner: {Jam3ya.author.username}</p>
+        <h2 className="card-title">{jam3ya.title}</h2>
+        <p>owner: {jam3ya.author.username}</p>
       </div>
 
       <Button variant="primary" onClick={() => setModalShow(true)}>
-        About this Jam3ya
+        About this jam3ya
       </Button>
 
       <DetailsModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        Jam3ya={Jam3ya}
+        jam3ya={jam3ya}
       />
     </div>
   );
 }
 
-export default Jam3yaItem;
+export default observer(Jam3yaItem);

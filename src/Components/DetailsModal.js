@@ -3,28 +3,35 @@ import { Form, Modal, Button } from "react-bootstrap";
 import jam3yatStore from "../Stores/jam3yatStore";
 import authenticationStore from "../Stores/authenticationStore";
 import Jam3yaMember from "./Jam3yaMember";
+import { observer } from "mobx-react";
 
 function DetailsModal(props) {
-  console.log(props.Jam3ya);
+  console.log(props.jam3ya);
 
   const handleDelete = () => {
-    jam3yatStore.deleteJam3ya(props.Jam3ya._id);
+    jam3yatStore.deleteJam3ya(props.jam3ya._id);
+    props.onHide();
   };
-  console.log(+props.Jam3ya.limit > props.Jam3ya.users.length);
-  console.log(+props.Jam3ya.limit);
-  console.log(props.Jam3ya.users.length);
-  console.log(Date.parse(props.Jam3ya.startDate) / 1000 < Date.now());
+  console.log(+props.jam3ya.limit > props.jam3ya.users.length);
+  console.log(+props.jam3ya.limit);
+  console.log(props.jam3ya.users.length);
+  console.log(Date.parse(props.jam3ya.startDate) / 1000 < Date.now());
   console.log(Date.now());
-  console.log(Date.parse(props.Jam3ya.startDate) / 1000);
+  console.log(Date.parse(props.jam3ya.startDate) / 1000);
   const handleJoin = () => {
-    jam3yatStore.joinJam3ya(props.Jam3ya._id);
+    jam3yatStore.joinJam3ya(props.jam3ya._id);
   };
 
-  const jam3yaMembers = props.Jam3ya.users.map((user) => {
-    <ol className="list-group list-group-numbered">
-      <Jam3yaMember user={user} />
-    </ol>;
-  });
+  const handleLeave = () => {
+    jam3yatStore.leaveJam3ya(props.jam3ya._id);
+  };
+  console.log(props.jam3ya.users);
+  console.log(props.jam3ya.users.length);
+  const jam3yaMembers = props.jam3ya.users.map((user) => (
+    <Jam3yaMember user={user} />
+  ));
+
+  console.log(jam3yaMembers);
   return (
     <div>
       <Modal
@@ -37,30 +44,34 @@ function DetailsModal(props) {
           <Modal.Title id="contained-modal-title-vcenter">Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h5>{props.Jam3ya.title}</h5>
+          <h5>{props.jam3ya.title}</h5>
           <p>
-            <img className="card-img-top" src={props.Jam3ya.image} alt="" />
+            <img className="card-img-top" src={props.jam3ya.image} alt="" />
           </p>
-          <p>The monthly amount: {props.Jam3ya.amount}</p>
-          <p>How many people: {props.Jam3ya.limit}</p>
-          <p>The start date:: {props.Jam3ya.startDate}</p>
-          <p>The end date: {props.Jam3ya.endDate}</p>
-          {jam3yaMembers}
+          <p>The monthly amount: {props.jam3ya.amount}</p>
+          <p>How many people: {props.jam3ya.limit}</p>
+          <p>The start date:: {props.jam3ya.startDate}</p>
+          <p>The end date: {props.jam3ya.endDate}</p>
+          <ol className="list-group list-group-numbered">
+            hhjjj{jam3yaMembers}
+          </ol>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>
-          {props.Jam3ya.author.username ===
+          {props.jam3ya.author.username ===
             authenticationStore.user.username && (
             <Button onClick={handleDelete}>Delete</Button>
           )}
-          {+props.Jam3ya.limit > props.Jam3ya.users.length &&
-            Date.parse(props.Jam3ya.startDate) / 1000 < Date.now() && (
+          {+props.jam3ya.limit > props.jam3ya.users.length &&
+            Date.parse(props.jam3ya.startDate) / 1000 < Date.now() && (
               <Button onClick={handleJoin}>Join</Button>
             )}
+
+          {<Button onClick={handleLeave}>Leave</Button>}
         </Modal.Footer>
       </Modal>
     </div>
   );
 }
 
-export default DetailsModal;
+export default observer(DetailsModal);

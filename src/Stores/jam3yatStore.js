@@ -28,9 +28,9 @@ class Jam3yaStore {
 
   deleteJam3ya = async (id) => {
     try {
-      console.log(id);
-      const response = await api.delete("/jam3ya" + `/${id}`);
-      //this.Jam3yaStore.fetchJam3yat();
+      await api.delete(`/jam3ya/${id}`);
+      this.jam3yat = this.jam3yat.filter((jam3ya) => jam3ya._id !== id);
+      console.log(this.jam3yat);
     } catch (error) {
       console.error("Jam3yaStore -> deleteJam3ya -> error", error);
     }
@@ -40,6 +40,15 @@ class Jam3yaStore {
     try {
       console.log(id);
       const response = await api.post("/jam3ya/join" + `/${id}`);
+    } catch (error) {
+      console.error("Jam3yaStore -> deleteJam3ya -> error", error);
+    }
+  };
+
+  leaveJam3ya = async (id) => {
+    try {
+      console.log(id);
+      const response = await api.post(`/jam3ya/leave/${id}`);
     } catch (error) {
       console.error("Jam3yaStore -> deleteJam3ya -> error", error);
     }
