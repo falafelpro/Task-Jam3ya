@@ -1,8 +1,6 @@
 import api from "./api";
 import { makeObservable, makeAutoObservable, action, observable } from "mobx";
 import decode from "jwt-decode";
-import { Redirect } from "react-router";
-
 //after submit form redirect user
 
 class AuthenticationStore {
@@ -22,7 +20,7 @@ class AuthenticationStore {
     api.defaults.headers.common.Authorization = `Bearar ${token}`;
     this.user = decode(token);
 
-    console.log(token);
+    //console.log(token);
   };
   logging = async (loggingInfo, path) => {
     try {
@@ -34,7 +32,8 @@ class AuthenticationStore {
   };
 
   logOut = () => {
-    delete api.defaults.common.Authorization;
+    //defaults.headers.common.Authorization;
+    delete api.defaults.headers.common.Authorization;
     localStorage.removeItem("personalToken");
     this.user = null;
   };
@@ -47,7 +46,6 @@ class AuthenticationStore {
       let tempUserToken = decode(token);
       if (tempUserToken.exp >= currentTime) {
         this.setUser(token);
-        <Redirect to="/Dashboard" />;
       } else {
         this.logOut();
       }

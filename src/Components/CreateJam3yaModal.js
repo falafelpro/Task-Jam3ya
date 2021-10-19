@@ -49,7 +49,7 @@ function CreateJam3yaModal(props) {
           <InputGroup>
             <InputGroup.Text>Start Date</InputGroup.Text>
             <Form.Control
-              type="date"
+              type="datetime-local"
               name="startDate"
               onChange={handleChange}
             />
@@ -57,7 +57,11 @@ function CreateJam3yaModal(props) {
           <br />
           <InputGroup>
             <InputGroup.Text>End Date</InputGroup.Text>
-            <Form.Control type="date" name="endDate" onChange={handleChange} />
+            <Form.Control
+              type="datetime-local"
+              name="endDate"
+              onChange={handleChange}
+            />
           </InputGroup>
         </Form>
       </Modal.Body>

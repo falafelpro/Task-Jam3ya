@@ -1,9 +1,6 @@
 import { useState } from "react";
 import authenticationStore from "../Stores/authenticationStore";
-import { Redirect } from "react-router-dom";
 import { observer } from "mobx-react";
-//import { browserHistory } from "react-router";
-//do something...
 
 function SignIn() {
   const [user, setUser] = useState({
@@ -16,9 +13,7 @@ function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     authenticationStore.logging(user, "signin");
-    //browserHistory.push("/Dashboard");
   };
-
   return (
     <form onSubmit={handleSubmit}>
       <label for="username">Username </label>

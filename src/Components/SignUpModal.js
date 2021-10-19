@@ -12,8 +12,9 @@ export default function SignUpModal(props) {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    //check path typo
-    authenticationStore.logging(user, "signup");
+    props.signIn
+      ? authenticationStore.logging(user, "signin")
+      : authenticationStore.logging(user, "signup");
     props.closeModal();
   };
   return (
@@ -38,15 +39,18 @@ export default function SignUpModal(props) {
               placeholder="Enter your username"
             />
           </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              onChange={handleChange}
-              name="email"
-              placeholder="Enter your email"
-            />
-          </Form.Group>
+          {!props.signIn && (
+            <Form.Group className="mb-3">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                onChange={handleChange}
+                name="email"
+                placeholder="Enter your email"
+              />
+            </Form.Group>
+          )}
+
           <Form.Group className="mb-3">
             <Form.Label>Password</Form.Label>
             <Form.Control
@@ -60,7 +64,7 @@ export default function SignUpModal(props) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="warning" onClick={handleSubmit}>
-          Sign up
+          {props.signIn ? "Sign in" : "Sign up"}{" "}
         </Button>
         <Button variant="warning" onClick={props.closeModal}>
           Close
