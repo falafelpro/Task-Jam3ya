@@ -25,6 +25,16 @@ class Jam3yaStore {
       console.error("Jam3yaStore -> createJam3ya -> error", error);
     }
   };
+
+  deleteJam3ya = async (id) => {
+    try {
+      console.log(id);
+      const response = await api.delete("/jam3ya" + `/${id}`);
+      this.Jam3yaStore.fetchJam3yat();
+    } catch (error) {
+      console.error("Jam3yaStore -> deleteJam3ya -> error", error);
+    }
+  };
 }
 
 const jam3yatStore = new Jam3yaStore();

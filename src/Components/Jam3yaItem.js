@@ -13,7 +13,7 @@ function Jam3yaItem({ Jam3ya }) {
       </div>
 
       <Button variant="primary" onClick={() => setModalShow(true)}>
-        Launch vertically centered modal
+        About this Jam3ya
       </Button>
 
       <DetailsModal

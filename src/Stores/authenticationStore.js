@@ -17,7 +17,7 @@ class AuthenticationStore {
 
   setUser = (token) => {
     localStorage.setItem("personalToken", token);
-    api.defaults.headers.common.Authorization = `Bearar ${token}`;
+    api.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.user = decode(token);
 
     //console.log(token);

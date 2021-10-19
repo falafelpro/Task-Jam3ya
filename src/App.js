@@ -9,6 +9,7 @@ import authenticationStore from "./Stores/authenticationStore";
 import { observer } from "mobx-react";
 import { Redirect } from "react-router";
 import Jam3yatList from "./Components/Jam3yatList";
+import "react-datepicker/dist/react-datepicker.css";
 
 function App() {
   return (
