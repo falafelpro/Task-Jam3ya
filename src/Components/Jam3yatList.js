@@ -3,7 +3,7 @@ import jam3yatStore from "../Stores/jam3yatStore";
 import Jam3yaItem from "./Jam3yaItem";
 import CreateJam3yaModal from "./CreateJam3yaModal";
 
-function Jam3yatList() {
+function Jam3yatList(props) {
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);

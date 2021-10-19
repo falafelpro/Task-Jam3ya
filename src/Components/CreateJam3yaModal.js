@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import jam3yatStore from "../Stores/jam3yatStore";
 import { Form, Modal, Button, InputGroup } from "react-bootstrap";
+import DatePicker from "react-datepicker";
 
 function CreateJam3yaModal(props) {
   const [jam3ya, setJam3ya] = useState({
@@ -48,19 +49,17 @@ function CreateJam3yaModal(props) {
           <br />
           <InputGroup>
             <InputGroup.Text>Start Date</InputGroup.Text>
-            <Form.Control
-              type="datetime-local"
-              name="startDate"
-              onChange={handleChange}
+            <DatePicker
+              selected={jam3ya.startDate}
+              onChange={(date) => setJam3ya({ ...jam3ya, startDate: date })}
             />
           </InputGroup>
           <br />
           <InputGroup>
             <InputGroup.Text>End Date</InputGroup.Text>
-            <Form.Control
-              type="datetime-local"
-              name="endDate"
-              onChange={handleChange}
+            <DatePicker
+              selected={jam3ya.endDate}
+              onChange={(date) => setJam3ya({ ...jam3ya, endDate: date })}
             />
           </InputGroup>
         </Form>
