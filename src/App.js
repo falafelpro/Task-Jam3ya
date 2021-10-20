@@ -13,19 +13,19 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function App() {
   return (
-    <>
+    <div className="dark-halloween">
       <NavBar />
 
       <Switch>
         <Route exact path="/Dashboard">
           <Dashboard />
-          <Details />
+          {/* <Details /> */}
         </Route>
         <Route exact path="/signin">
           <Login />
         </Route>
       </Switch>
-    </>
+    </div>
   );
 }
 

@@ -35,39 +35,53 @@ function DetailsModal(props) {
   return (
     <div>
       <Modal
+        className="dark-halloween"
         {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header>
-          <Modal.Title id="contained-modal-title-vcenter">Details</Modal.Title>
+        <Modal.Header className="brownred-halloween text-halloween">
+          <Modal.Title id="contained-modal-title-vcenter">
+            Jam3ya Details
+          </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <h5>{props.jam3ya.title}</h5>
+        <Modal.Body className="brownred-halloween text-halloween">
+          <h3>{props.jam3ya.title}</h3>
           <p>
             <img className="card-img-top" src={props.jam3ya.image} alt="" />
           </p>
           <p>The monthly amount: {props.jam3ya.amount}</p>
-          <p>How many people: {props.jam3ya.limit}</p>
+          <p>How many people allowed: {props.jam3ya.limit}</p>
           <p>The start date:: {props.jam3ya.startDate}</p>
           <p>The end date: {props.jam3ya.endDate}</p>
-          <ol className="list-group list-group-numbered">
-            hhjjj{jam3yaMembers}
+          <ol className="list-group list-group-numbered text-halloween ">
+            <h5>Jam3ya Members:</h5>
+            {jam3yaMembers}
           </ol>
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+        <Modal.Footer className="brownred-halloween text-halloween">
+          <Button className="button2-halloween" onClick={props.onHide}>
+            Close
+          </Button>
           {props.jam3ya.author.username ===
             authenticationStore.user.username && (
-            <Button onClick={handleDelete}>Delete</Button>
+            <Button className="button2-halloween" onClick={handleDelete}>
+              Delete
+            </Button>
           )}
           {+props.jam3ya.limit > props.jam3ya.users.length &&
             Date.parse(props.jam3ya.startDate) / 1000 < Date.now() && (
-              <Button onClick={handleJoin}>Join</Button>
+              <Button className="button2-halloween" onClick={handleJoin}>
+                Join
+              </Button>
             )}
 
-          {<Button onClick={handleLeave}>Leave</Button>}
+          {
+            <Button className="button2-halloween" onClick={handleLeave}>
+              Leave
+            </Button>
+          }
         </Modal.Footer>
       </Modal>
     </div>

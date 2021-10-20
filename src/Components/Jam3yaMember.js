@@ -1,10 +1,13 @@
 import React from "react";
+import { observer } from "mobx-react";
 
 function Jam3yaMember({ user }) {
   console.log(user);
   return (
-    <li class="list-group-item">{user.username + " Amount: " + user.wallet}</li>
+    <li className="list-group-item brownred-halloween-background-only text-halloween">
+      {user.username + " Amount: " + user.wallet}
+    </li>
   );
 }
 
-export default Jam3yaMember;
+export default observer(Jam3yaMember);

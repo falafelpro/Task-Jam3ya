@@ -6,14 +6,22 @@ import { observer } from "mobx-react";
 function Jam3yaItem({ jam3ya }) {
   const [modalShow, setModalShow] = useState(false);
   return (
-    <div className="card">
-      <img className="card-img-top" src={jam3ya.image} alt="" />
+    <div className="card brownred-halloween shadow p-3 mb-5 rounded">
+      <img
+        className="card-img-top"
+        src="https://icons-for-free.com/iconfiles/png/512/yard+graves+halloween+zombie+icon-1320183496934795581.png"
+        alt=""
+      />
       <div className="card-body">
         <h2 className="card-title">{jam3ya.title}</h2>
         <p>owner: {jam3ya.author.username}</p>
       </div>
 
-      <Button variant="primary" onClick={() => setModalShow(true)}>
+      <Button
+        className="button-halloween "
+        variant="primary"
+        onClick={() => setModalShow(true)}
+      >
         About this jam3ya
       </Button>
 

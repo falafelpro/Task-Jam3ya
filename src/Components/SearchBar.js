@@ -7,7 +7,7 @@ const SearchBar = (props) => {
       <input
         className="searchBar form-control"
         onChange={(event) => props.setQuery(event.target.value)}
-        placeholder="Search for a cookie name"
+        placeholder="Search for a Jam3ya name"
       />
       <div class="form-check">
         <input
@@ -17,8 +17,11 @@ const SearchBar = (props) => {
           id="flexCheckDefault"
           onChange={(event) => props.setIsCheckboxChecked(event.target.checked)}
         />
-        <label class="form-check-label" for="flexCheckDefault">
-          Show jam3yat that hasnt started.
+        <label
+          className="form-check-label text-halloween"
+          for="flexCheckDefault"
+        >
+          Show jam3yat that hasn't started.
         </label>
       </div>
     </>

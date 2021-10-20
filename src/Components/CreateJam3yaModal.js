@@ -21,11 +21,16 @@ function CreateJam3yaModal(props) {
     props.closeModal(); // this is to close the modal that is shown
   };
   return (
-    <Modal centered show={props.isOpen} onHide={props.closeModal}>
-      <Modal.Header closeButton>
+    <Modal
+      className="dark-halloween "
+      centered
+      show={props.isOpen}
+      onHide={props.closeModal}
+    >
+      <Modal.Header className="brownred-halloween">
         <Modal.Title>Create a Jam3ya</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className="brownred-halloween">
         <Form onSubmit={handleSubmit}>
           <InputGroup>
             <InputGroup.Text>Title</InputGroup.Text>
@@ -66,8 +71,12 @@ function CreateJam3yaModal(props) {
           </InputGroup>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="primary" onClick={handleSubmit}>
+      <Modal.Footer className="brownred-halloween">
+        <Button
+          className="button2-halloween"
+          variant="primary"
+          onClick={handleSubmit}
+        >
           Create Jam3ya
         </Button>
       </Modal.Footer>

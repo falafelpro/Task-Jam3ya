@@ -15,10 +15,15 @@ function Dashboard(props) {
   // );
   return (
     <>
-      <div className="container col-12">
+      <div className="pt-5 mt-5 container col-12 ">
         <div className="row">
           <div className="side-bar col-3">
-            <button onClick={openModal}>Create</button>
+            <button
+              className="btn button2-halloween text-halloween"
+              onClick={openModal}
+            >
+              Create
+            </button>
             <SearchBar
               setQuery={setQuery}
               setIsCheckboxChecked={setIsCheckboxChecked}
