@@ -5,11 +5,15 @@ import CreateJam3yaModal from "./CreateJam3yaModal";
 import { observer } from "mobx-react";
 
 function Jam3yatList(props) {
-  const fetchedJam3yat = jam3yatStore.jam3yat.map((jam3ya) => (
-    <div className="col">
-      <Jam3yaItem jam3ya={jam3ya} />
-    </div>
-  ));
+  const fetchedJam3yat = jam3yatStore.jam3yat
+    .filter((jam3ya) =>
+      jam3ya.title.toLowerCase().includes(props.query.toLowerCase())
+    )
+    .map((jam3ya) => (
+      <div className="col">
+        <Jam3yaItem jam3ya={jam3ya} />
+      </div>
+    ));
 
   return (
     <div className="row row-cols-1 row-cols-md-3 g-4">

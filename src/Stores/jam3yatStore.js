@@ -40,6 +40,7 @@ class Jam3yaStore {
     try {
       console.log(id);
       const response = await api.post("/jam3ya/join" + `/${id}`);
+      //this.jam3yat = this.jam3yat.map((jam3ya) => jam3ya);
     } catch (error) {
       console.error("Jam3yaStore -> deleteJam3ya -> error", error);
     }

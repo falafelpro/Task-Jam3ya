@@ -10,9 +10,7 @@ function Dashboard(props) {
   const openModal = () => setIsOpen(true);
   const [query, setQuery] = useState("");
   const [IsCheckboxChecked, setIsCheckboxChecked] = useState(false);
-  // jam3yatStore.jam3yat = jam3yatStore.jam3yat.filter((jam3ya) =>
-  //   jam3ya.title.toLowerCase().includes(query.toLowerCase())
-  // );
+
   return (
     <>
       <div className="pt-5 mt-5 container col-12 ">
@@ -31,6 +29,7 @@ function Dashboard(props) {
           </div>
           <div className="content col-9">
             <Jam3yatList
+              query={query}
               setDetails={props.setDetails}
               isOpen={isOpen}
               closeModal={closeModal}

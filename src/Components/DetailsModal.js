@@ -20,10 +20,12 @@ function DetailsModal(props) {
   console.log(Date.parse(props.jam3ya.startDate) / 1000);
   const handleJoin = () => {
     jam3yatStore.joinJam3ya(props.jam3ya._id);
+    props.onHide();
   };
 
   const handleLeave = () => {
     jam3yatStore.leaveJam3ya(props.jam3ya._id);
+    props.onHide();
   };
   console.log(props.jam3ya.users);
   console.log(props.jam3ya.users.length);
