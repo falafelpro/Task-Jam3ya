@@ -1,14 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Jam3yatList from "./Jam3yatList";
+import SearchBar from "./SearchBar";
+import jam3yatStore from "../Stores/jam3yatStore";
+import { observer } from "mobx-react";
 
 function Dashboard(props) {
+  const [isOpen, setIsOpen] = useState(false);
+  const closeModal = () => setIsOpen(false);
+  const openModal = () => setIsOpen(true);
+  const [query, setQuery] = useState("");
+  const [IsCheckboxChecked, setIsCheckboxChecked] = useState(false);
+  // jam3yatStore.jam3yat = jam3yatStore.jam3yat.filter((jam3ya) =>
+  //   jam3ya.title.toLowerCase().includes(query.toLowerCase())
+  // );
   return (
     <>
       <div className="container col-12">
         <div className="row">
-          <div className="side-bar col-3">Sidebar</div>
+          <div className="side-bar col-3">
+            <button onClick={openModal}>Create</button>
+            <SearchBar
+              setQuery={setQuery}
+              setIsCheckboxChecked={setIsCheckboxChecked}
+            />
+          </div>
           <div className="content col-9">
-            <Jam3yatList setDetails={props.setDetails} />
+            <Jam3yatList
+              setDetails={props.setDetails}
+              isOpen={isOpen}
+              closeModal={closeModal}
+            />
           </div>
         </div>
       </div>
@@ -16,4 +37,4 @@ function Dashboard(props) {
   );
 }
 
-export default Dashboard;
+export default observer(Dashboard);
